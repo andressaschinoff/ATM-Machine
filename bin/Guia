@@ -1,0 +1,105 @@
+public void changePIN() {
+		// Ask which file is load 
+		System.out.println("Please enter your ID");
+		String fileToModify = askingUser();
+		
+		// Load the file and save it in array
+		loadingFile(fileToModify);
+		
+		// The line will be modify
+		int lineToModify = Integer.parseInt("2");
+			
+		// Ask the new info
+		System.out.println("Please enter your new four-digit password");
+		String newValue = askingUser();
+		
+		
+		System.out.println("Please enter again your new four-digit password");
+		String newValue2 = askingUser();
+		
+		if (newValue.equals(newValue2)){
+			//Change the info in the array
+			infoInFile[lineToModify - 1] = newValue;
+			
+			// Re-Writing the file
+			writingIntoFile(fileToModify);
+		}
+		
+		backToMenu();
+	}
+       
+        // Printing the new info in the file
+	public void writingIntoFile(String fileToModify) {
+		
+		try {
+			PrintWriter writer = new PrintWriter("C:\\Users\\Andre\\eclipse-workspace\\Assigments\\" + fileToModify + ".txt");
+			
+			for (int i = 0; i < 3 ; i++) {
+				writer.println(infoInFile[i]);
+				}
+			writer.close();
+			} 
+		
+		catch (Exception e) {
+				e.printStackTrace();
+				}
+		}
+       
+        // Reading input from user 
+	public String askingUser() {
+		
+		BufferedReader br7 = new BufferedReader (new InputStreamReader (System.in));
+		String answer7 = "";
+		try {
+			answer7 = br7.readLine();
+			}catch (Exception e) {
+				
+			}return answer7;
+			}
+       
+        // Loading the file and save it as an array
+	public void loadingFile(String fileToLoad) {
+		infoInFile = new String[3];
+		try {
+			BufferedReader br8 = new BufferedReader (new FileReader("C:\\Users\\Andre\\eclipse-workspace\\Assigments\\" + fileToLoad + ".txt"));
+			for (int i = 0; i < 3; i++) {
+				infoInFile[i] = br8.readLine();
+				
+			}
+			br8.close();
+			} catch (Exception e) {
+				System.out.println("I can't find that file");
+			}
+		}
+
+	public void stockPrice() {
+		loadingStockFile();
+        showingStockInfo();
+		backToMenu();
+	}
+	
+	public void loadingStockFile() {
+        
+        infoInStock = new String[6];
+       
+        try {
+                      BufferedReader br = new BufferedReader (new FileReader("C:\\Users\\Andre\\eclipse-workspace\\Assigments\\stocks.txt"));
+                     
+                      for (int i = 0; i < 6; i++) {
+                    	  infoInStock[i] = br.readLine();
+                                   
+                      }
+                     
+                      br.close();
+        } catch (Exception e) {
+                      System.out.println("I can't find that file");
+        }
+       
+}
+	public void showingStockInfo() {
+        for (int i = 0; i < 6; i++) {
+                      System.out.println(infoInStock[i]);
+        }
+}
+
+            

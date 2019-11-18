@@ -1,0 +1,6 @@
+COMPANY		LAST PRICE		CHANGE		% CHANGE
+ABC	 		111.2			+3.4		+1.4
+TSD			322.3			-1.9		-2.8		
+HRF			834.2			+2.9		+1.4
+FGT			929.2			-1.5		-1.5
+NED			292.1			-2.3		-2.1
